@@ -1,3 +1,10 @@
 {
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react", // or "preserve" or "react-jsx"
+    "strict": true,
+    "esModuleInterop": true
+  },
   "extends": "@tsconfig/react-native/tsconfig.json"
 }
