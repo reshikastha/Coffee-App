@@ -1,6 +1,6 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -11,8 +11,7 @@ import FavoritesScreen from '../screens/FavoritesScreen';
 import CartScreen from '../screens/CartScreens';
 import OrderHistoryScreen from '../screens/OrderHistoryScreen';
 import CustomIcon from '../components/CustomIcons';
-import  Ionicons from 'react-native-vector-icons/Ionicons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 
@@ -68,8 +67,8 @@ const TabNavigator = () => {
         component={FavoritesScreen}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <AntDesign
-              name="like1"
+            <Ionicons
+              name="heart-sharp"
               size={25}
               color={
                 focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
@@ -83,8 +82,8 @@ const TabNavigator = () => {
         component={OrderHistoryScreen}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-                <AntDesign
-              name="bells"
+                <Ionicons
+              name="layers"
               size={25}
               color={
                 focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
