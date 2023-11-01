@@ -1,6 +1,7 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable eqeqeq */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable prettier/prettier */
+
 import React, {useRef, useState} from 'react';
 import {
   ScrollView,
