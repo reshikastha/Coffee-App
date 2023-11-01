@@ -14,6 +14,9 @@ interface Spacing {
   space_30: number;
   space_32: number;
   space_36: number;
+  space_38: number,
+  space_40: number,
+  space_42: number,
 }
 
 export const SPACING: Spacing = {
@@ -31,6 +34,9 @@ export const SPACING: Spacing = {
   space_30: 30,
   space_32: 32,
   space_36: 36,
+  space_38: 38,
+  space_40: 40,
+  space_42: 42,
 };
 
 interface Color {
