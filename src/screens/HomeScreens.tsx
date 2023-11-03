@@ -12,52 +12,57 @@ import {
   TouchableOpacity,
   View,
   ToastAndroid,
-  FlatList
+  FlatList,
 } from 'react-native';
-import { useStore } from '../store/store';
-import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
-import { COLORS, FONTFAMILY, FONTSIZE, SPACING, BORDERRADIUS } from '../theme/theme';
+import {useStore} from '../store/store';
+import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
+import {
+  COLORS,
+  FONTFAMILY,
+  FONTSIZE,
+  SPACING,
+  BORDERRADIUS,
+} from '../theme/theme';
 import HeaderBar from '../components/HeaderBar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const getCategoriesFromData = (data: any)=>{
+const getCategoriesFromData = (data: any) => {
   let temp: any = {};
-  for (let i = 0; i < data.length; i++){
-    if (temp[data[i].name] == undefined){    //temp[data[i].name] = temp object ko data[index] number ko name linxa
+  for (let i = 0; i < data.length; i++) {
+    if (temp[data[i].name] == undefined) {
+      //temp[data[i].name] = temp object ko data[index] number ko name linxa
       temp[data[i].name] = 1;
     } else {
       temp[data[i].name]++;
     }
   }
   let categories = Object.keys(temp); // extract all the property from temp and make it into an array
-  categories.unshift('All');  ///unshift() is used to add one or more elements to the beginning of the given array or the start of the array
+  categories.unshift('All'); ///unshift() is used to add one or more elements to the beginning of the given array or the start of the array
   return categories;
 };
 
-
-const getCoffeeList = (category:string, data:any) =>{
-  if (category == 'All'){
+const getCoffeeList = (category: string, data: any) => {
+  if (category == 'All') {
     return data;
   } else {
-    let coffeelist = data.filter((item:any) => item.name == category);
+    let coffeelist = data.filter((item: any) => item.name == category);
     return coffeelist;
   }
 };
-
 
 const HomeScreens = () => {
   const CoffeeList = useStore((state: any) => state.CoffeeList);
   const BeanList = useStore((state: any) => state.BeanList);
   const [categories, setCategories] = useState(
-    getCategoriesFromData(CoffeeList) // this function will get all the categories from CoffeeList
-    );
+    getCategoriesFromData(CoffeeList), // this function will get all the categories from CoffeeList
+  );
   const [searchText, setSearchText] = useState('');
   const [categoryIndex, setCategoryIndex] = useState({
-    index:0,
-    category:categories[0],
+    index: 1,
+    category: categories[1],
   });
   const [sortedCoffee, setSortedCoffee] = useState(
-    getCoffeeList(categoryIndex.category, CoffeeList)
+    getCoffeeList(categoryIndex.category, CoffeeList),
   );
 
   const ListRef: any = useRef<FlatList>();
@@ -89,10 +94,14 @@ const HomeScreens = () => {
   return (
     <View style={styles.ScreenContainer}>
       <StatusBar backgroundColor={COLORS.primaryBlackHex} />
-      <ScrollView showsVerticalScrollIndicator={false}
-      contentContainerStyle={styles.ScrollViewFlex} >
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.ScrollViewFlex}>
         <HeaderBar />
-        <Text style={styles.ScreenTitle}> Find the best {'\n'} coffee for you</Text>
+        <Text style={styles.ScreenTitle}>
+          {' '}
+          Find the best {'\n'} coffee for you
+        </Text>
         <View style={styles.InputContainerComponent}>
           <TouchableOpacity
             onPress={() => {
@@ -121,10 +130,9 @@ const HomeScreens = () => {
           />
           {searchText.length > 0 ? (
             <TouchableOpacity
-            onPress={() => {
-              resetSearchCoffee();
-            }}
-             >
+              onPress={() => {
+                resetSearchCoffee();
+              }}>
               <Ionicons
                 style={styles.InputIcon}
                 name="close"
@@ -136,7 +144,41 @@ const HomeScreens = () => {
             <></>
           )}
         </View>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.CategoryScrollViewStyle}>
+          {categories.map((data, index) => (
+            <View
+              key={index.toString()}
+              style={styles.CategoryScrollViewContainer}>
+              <TouchableOpacity
+                onPress={() => {
+                  setCategoryIndex({index: index, category: categories[index]});
+                  setSortedCoffee([
+                    ...getCoffeeList(categories[index], CoffeeList),
+                  ]);
+                }}
+                style={styles.CategoryScrollViewItem}>
+                <Text
+                  style={[
+                    styles.CategoryText,
+                    categoryIndex.index == index
+                      ? {color: COLORS.primaryOrangeHex}
+                      : {},
+                  ]}>
+                  {data}
+                </Text>
+                {categoryIndex.index == index ? (
+                  <View style={styles.ActiveCategory} />
+                ) : (
+                  <></>
+                )}
+              </TouchableOpacity>
+            </View>
+          ))}
         </ScrollView>
+      </ScrollView>
     </View>
   );
 };
@@ -144,18 +186,18 @@ const HomeScreens = () => {
 export default HomeScreens;
 
 const styles = StyleSheet.create({
-  ScreenContainer:{
-    flex:1,
+  ScreenContainer: {
+    flex: 1,
     backgroundColor: COLORS.primaryBlackHex,
   },
-  ScrollViewFlex:{
-    flexGrow:1,
+  ScrollViewFlex: {
+    flexGrow: 1,
   },
-  ScreenTitle:{
-    fontSize:FONTSIZE.size_28,
-    fontFamily:FONTFAMILY.poppins_semibold,
-    color:COLORS.primaryWhiteHex,
-    paddingLeft:SPACING.space_30,
+  ScreenTitle: {
+    fontSize: FONTSIZE.size_28,
+    fontFamily: FONTFAMILY.poppins_semibold,
+    color: COLORS.primaryWhiteHex,
+    paddingLeft: SPACING.space_30,
   },
   InputContainerComponent: {
     flexDirection: 'row',
@@ -173,5 +215,28 @@ const styles = StyleSheet.create({
     fontFamily: FONTFAMILY.poppins_medium,
     fontSize: FONTSIZE.size_16,
     color: COLORS.primaryWhiteHex,
+  },
+  CategoryScrollViewStyle: {
+    paddingHorizontal: SPACING.space_20,
+    marginBottom: SPACING.space_20,
+  },
+  CategoryScrollViewContainer: {
+    paddingHorizontal: SPACING.space_15,
+  },
+
+  CategoryScrollViewItem: {
+    alignItems: 'center',
+  },
+  CategoryText: {
+    fontFamily: FONTFAMILY.poppins_semibold,
+    fontSize: FONTSIZE.size_16,
+    color: COLORS.primaryLightGreyHex,
+    marginBottom: SPACING.space_4,
+  },
+  ActiveCategory: {
+    height: SPACING.space_10,
+    width: SPACING.space_10,
+    borderRadius: BORDERRADIUS.radius_10,
+    backgroundColor: COLORS.primaryOrangeHex,
   },
 });
