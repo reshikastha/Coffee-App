@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable eqeqeq */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
@@ -25,6 +24,7 @@ import {
 } from '../theme/theme';
 import HeaderBar from '../components/HeaderBar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import CoffeeCard from '../components/CoffeeCard';
 
 const getCategoriesFromData = (data: any) => {
   let temp: any = {};
@@ -58,8 +58,8 @@ const HomeScreens = () => {
   );
   const [searchText, setSearchText] = useState('');
   const [categoryIndex, setCategoryIndex] = useState({
-    index: 1,
-    category: categories[1],
+    index: 0,
+    category: categories[0],
   });
   const [sortedCoffee, setSortedCoffee] = useState(
     getCoffeeList(categoryIndex.category, CoffeeList),
@@ -178,6 +178,34 @@ const HomeScreens = () => {
             </View>
           ))}
         </ScrollView>
+
+        {/* Coffee Flatlist */}
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={sortedCoffee}
+          contentContainerStyle={styles.FlatListContainer}
+          keyExtractor={item => item.id}
+          renderItem={({item}) => {
+            return (
+              <TouchableOpacity>
+                <CoffeeCard
+                  id={item.id}
+                  index={item.index}
+                  type={item.type}
+                  roasted={item.roasted}
+                  imagelink_square={item.imagelink_square}
+                  name={item.name}
+                  special_ingredient={item.special_ingredient}
+                  average_rating={item.average_rating}
+                  price={item.prices[2]}
+                  buttonPresshandler={() => {}}
+                />
+              </TouchableOpacity>
+            );
+          }}
+        />
+        {/* Beans Flatlist */}
       </ScrollView>
     </View>
   );
@@ -238,5 +266,10 @@ const styles = StyleSheet.create({
     width: SPACING.space_10,
     borderRadius: BORDERRADIUS.radius_10,
     backgroundColor: COLORS.primaryOrangeHex,
+  },
+  FlatListContainer: {
+    gap: SPACING.space_20,
+    paddingVertical: SPACING.space_20,
+    paddingHorizontal: SPACING.space_30,
   },
 });

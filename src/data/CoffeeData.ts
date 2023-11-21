@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 const CoffeeData = [
   {
     id: 'C1',
