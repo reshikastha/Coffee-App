@@ -24,6 +24,7 @@ import {
 } from '../theme/theme';
 import HeaderBar from '../components/HeaderBar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import CoffeeCard from '../components/CoffeeCard';
 
 const getCategoriesFromData = (data: any) => {
@@ -99,8 +100,19 @@ const HomeScreens = () => {
         contentContainerStyle={styles.ScrollViewFlex}>
         <HeaderBar />
         <Text style={styles.ScreenTitle}>
-          {' '}
-          Find the best {'\n'} coffee for you
+          I'm in the mood {'\n'}for a cup of coffee.{' '}
+          <FontAwesome5
+            name="grin-stars"
+            size={24}
+            color={COLORS.primaryRedHex}
+          />{' '}
+          <FontAwesome5 name="grin-hearts" size={24} color="skyblue" />{' '}
+          <FontAwesome5 name="grin-wink" size={24} color="lightgreen" />{' '}
+          <FontAwesome5
+            name="dizzy"
+            size={24}
+            color={COLORS.primaryOrangeHex}
+          />
         </Text>
         <View style={styles.InputContainerComponent}>
           <TouchableOpacity
@@ -158,6 +170,7 @@ const HomeScreens = () => {
                     animated: true,
                     offset: 0,
                   });
+                  // to get the exact index number for coffee to sort and display in list
                   setCategoryIndex({index: index, category: categories[index]});
                   setSortedCoffee([
                     ...getCoffeeList(categories[index], CoffeeList),
@@ -167,6 +180,7 @@ const HomeScreens = () => {
                 <Text
                   style={[
                     styles.CategoryText,
+                    // color change when click item index is equal to categoryIndex usestate
                     categoryIndex.index == index
                       ? {color: COLORS.primaryOrangeHex}
                       : {},
@@ -257,7 +271,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   ScreenTitle: {
-    fontSize: FONTSIZE.size_28,
+    fontSize: FONTSIZE.size_24,
     fontFamily: FONTFAMILY.poppins_semibold,
     color: COLORS.primaryWhiteHex,
     paddingLeft: SPACING.space_30,
@@ -308,10 +322,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.space_30,
   },
   CoffeeBeansTitle: {
-    fontSize: FONTSIZE.size_18,
+    fontSize: FONTSIZE.size_20,
     marginLeft: SPACING.space_30,
     marginTop: SPACING.space_20,
     fontFamily: FONTFAMILY.poppins_medium,
-    color: COLORS.secondaryLightGreyHex,
+    color: COLORS.primaryWhiteHex,
   },
 });

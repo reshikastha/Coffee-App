@@ -126,7 +126,8 @@ const styles = StyleSheet.create({
   CardSubtitle: {
     fontFamily: FONTFAMILY.poppins_medium,
     color: COLORS.primaryWhiteHex,
-    fontSize: FONTSIZE.size_10,
+    fontSize: FONTSIZE.size_12,
+    marginTop: SPACING.space_8,
   },
   CardPrice: {
     color: COLORS.primaryOrangeHex,
