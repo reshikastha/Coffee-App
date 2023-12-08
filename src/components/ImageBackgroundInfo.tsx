@@ -116,11 +116,6 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
                 <Text style={styles.RatingText}>{average_rating}</Text>
                 <Text style={styles.RatingCountText}>({ratings_count})</Text>
               </View>
-              <View style={styles.RoastedContainer}>
-                <Text style={styles.RoastedText}>
-                  {roasted} {type}
-                </Text>
-              </View>
             </View>
           </View>
         </View>
