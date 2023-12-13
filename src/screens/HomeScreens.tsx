@@ -130,7 +130,7 @@ const HomeScreens = ({navigation}: any) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.ScrollViewFlex}>
-        {/* <HeaderBar /> */}
+        <HeaderBar />
         <Text style={styles.ScreenTitle}>
           I'm in the mood {'\n'}for a cup of coffee.{' '}
           <FontAwesome5
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTFAMILY.poppins_semibold,
     color: COLORS.primaryWhiteHex,
     paddingLeft: SPACING.space_30,
-    marginTop: SPACING.space_40,
+    marginTop: SPACING.space_20,
   },
   InputContainerComponent: {
     flexDirection: 'row',

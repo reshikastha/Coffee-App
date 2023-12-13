@@ -17,8 +17,8 @@ const ProfilePic = () => {
 
 const styles = StyleSheet.create({
   ImageContainer: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     borderRadius: SPACING.space_12,
     borderWidth: 2,
     borderColor: COLORS.secondaryDarkGreyHex,
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   Image: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
   },
 });
 
