@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {useStore} from '../store/store';
@@ -5,7 +6,7 @@ import {useStore} from '../store/store';
 const CartScreens = () => {
   const cartList = useStore((state: any) => state.CartList);
 
-  console.log(cartList.length)
+  console.log(cartList.length);
   return (
     <View>
       <Text>CartScreens</Text>
