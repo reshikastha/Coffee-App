@@ -14,7 +14,7 @@ interface HeaderBarProps {
 const HeaderBar: React.FC<HeaderBarProps> = ({title}) => {
   return (
     <View style={styles.HeaderContainer}>
-    <GradientBGIcon name="menu" color={COLORS.primaryLightGreyHex} size={FONTSIZE.size_18}/>
+    {/* <GradientBGIcon name="menu" color={COLORS.primaryLightGreyHex} size={FONTSIZE.size_18}/> */}
       <Text style={styles.HeaderText}>{title}</Text>
       <ProfilePic/>
     </View>
@@ -34,5 +34,6 @@ const styles = StyleSheet.create({
     fontFamily:FONTFAMILY.poppins_semibold,
     fontSize:FONTSIZE.size_20,
     color:COLORS.primaryWhiteHex,
+    textAlign:'center',
   },
 });
