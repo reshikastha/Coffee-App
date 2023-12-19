@@ -214,7 +214,7 @@ const HomeScreens = ({navigation}: any) => {
                     styles.CategoryText,
                     // color change when click item index is equal to categoryIndex usestate
                     categoryIndex.index == index
-                      ? {color: COLORS.primaryOrangeHex}
+                      ? {color: COLORS.primaryWhiteHex}
                       : {},
                   ]}>
                   {data}
@@ -361,7 +361,7 @@ const styles = StyleSheet.create({
     height: SPACING.space_10,
     width: SPACING.space_10,
     borderRadius: BORDERRADIUS.radius_10,
-    backgroundColor: COLORS.primaryOrangeHex,
+    backgroundColor: COLORS.primaryWhiteHex,
   },
   FlatListContainer: {
     gap: SPACING.space_20,

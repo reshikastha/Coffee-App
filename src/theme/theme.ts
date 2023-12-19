@@ -42,6 +42,7 @@ export const SPACING: Spacing = {
 interface Color {
   primaryRedHex: string;
   primaryOrangeHex: string;
+  primaryBrownHex: string;
   primaryBlackHex: string;
   primaryDarkGreyHex: string;
   secondaryDarkGreyHex: string;
@@ -57,6 +58,7 @@ interface Color {
 export const COLORS: Color = {
   primaryRedHex: '#DC3535',
   primaryOrangeHex: '#D17842',
+  primaryBrownHex:'#7B3F00',
   primaryBlackHex: '#0C0F14',
   primaryDarkGreyHex: '#141921',
   secondaryDarkGreyHex: '#21262E',

@@ -1,12 +1,5 @@
-import {
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import React, {useState} from 'react';
+import {ScrollView, StatusBar, StyleSheet, View} from 'react-native';
+import React from 'react';
 import {useStore} from '../store/store';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 import {
@@ -18,13 +11,11 @@ import {
 } from '../theme/theme';
 import HeaderBar from '../components/HeaderBar';
 import EmptyListAnimation from '../components/EmptyListAnimation';
-import PopUpAnimation from '../components/PopUpAnimation';
 import OrderHistoryCard from '../components/OrderHistoryCard';
 
 const OrderHistoryScreen = ({navigation}: any) => {
   const OrderHistoryList = useStore((state: any) => state.OrderHistoryList);
   const tabBarHeight = useBottomTabBarHeight();
-  const [showAnimation, setShowAnimation] = useState(false);
 
   const navigationHandler = ({index, id, type}: any) => {
     navigation.push('Details', {
@@ -34,25 +25,9 @@ const OrderHistoryScreen = ({navigation}: any) => {
     });
   };
 
-  const buttonPressHandler = () => {
-    setShowAnimation(true);
-    setTimeout(() => {
-      setShowAnimation(false);
-    }, 2000);
-  };
-
   return (
     <View style={styles.ScreenContainer}>
       <StatusBar backgroundColor={COLORS.primaryBlackHex} />
-
-      {showAnimation ? (
-        <PopUpAnimation
-          style={styles.LottieAnimation}
-          source={require('../lottie/download.json')}
-        />
-      ) : (
-        <></>
-      )}
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -78,17 +53,6 @@ const OrderHistoryScreen = ({navigation}: any) => {
               </View>
             )}
           </View>
-          {/* {OrderHistoryList.length > 0 ? (
-            <TouchableOpacity
-              style={styles.DownloadButton}
-              onPress={() => {
-                buttonPressHandler();
-              }}>
-              <Text style={styles.ButtonText}>Download</Text>
-            </TouchableOpacity>
-          ) : (
-            <></>
-          )} */}
         </View>
       </ScrollView>
     </View>

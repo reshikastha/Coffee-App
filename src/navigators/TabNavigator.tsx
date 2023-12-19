@@ -41,7 +41,7 @@ const TabNavigator = () => {
               name="home"
               size={25}
               color={
-                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
+                focused ? COLORS.primaryWhiteHex : COLORS.primaryLightGreyHex
               }
             />
           ),
@@ -56,7 +56,7 @@ const TabNavigator = () => {
               name="cart"
               size={25}
               color={
-                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
+                focused ? COLORS.primaryWhiteHex : COLORS.primaryLightGreyHex
               }
             />
           ),
@@ -71,7 +71,7 @@ const TabNavigator = () => {
               name="heart-sharp"
               size={25}
               color={
-                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
+                focused ? COLORS.primaryWhiteHex : COLORS.primaryLightGreyHex
               }
             />
           ),
@@ -86,7 +86,7 @@ const TabNavigator = () => {
               name="layers"
               size={25}
               color={
-                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
+                focused ? COLORS.primaryWhiteHex : COLORS.primaryLightGreyHex
               }
             />
           ),
